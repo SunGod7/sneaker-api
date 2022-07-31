@@ -29,8 +29,11 @@ const router = express.Router()
 
 // INDEX
 // GET /sneakers
-router.get('/sneakers', requireToken, (req, res, next) => {
+router.get('/sneakers', (req, res, next) => {
 	Sneaker.find()
+	// we want everyone to see the pets, whether they're logged in or not.
+	// if we wanted to protect these resources, then we can add that middleware back in. 
+	//and we would place it between the route and the callback function.(second argument)
 		.then((sneakers) => {
 			// `sneakers` will be an array of Mongoose documents
 			// we want to convert each one to a POJO, so we use `.map` to
@@ -45,7 +48,7 @@ router.get('/sneakers', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /sneakers/5a7db6c74d55bc51bdf39793
-router.get('/sneakers/:id', requireToken, (req, res, next) => {
+router.get('/sneakers/:id', (req, res, next) => {
 	// req.params.id will be set based on the `:id` in the route
 	Sneaker.findById(req.params.id)
 		.then(handle404)

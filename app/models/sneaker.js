@@ -14,6 +14,10 @@ const sneakerSchema = new Schema(
 			type: Number,
 			required: true,
 		},
+		highFashion: {
+            type: Boolean,
+            required: true
+        },
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
@@ -35,11 +39,11 @@ sneakerSchema.virtual('fullTitle').get(function () {
 
 sneakerSchema.virtual('youWavvvy').get(function () {
     if (this.price < 200) {
-        return "yeah, they're just a baby"
+        return "yeah, you Wavvvy"
     } else if (this.price >= 200 && this.price < 500) {
         return "super wavvvy"
     } else {
-        return "is that DIOR?"
+        return "DRIPPPPY"
     }
 })
 module.exports = model('Sneaker', sneakerSchema)
