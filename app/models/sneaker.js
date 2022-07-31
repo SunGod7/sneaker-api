@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
+const shirtSchema = require('./shirt')
 const { Schema, model } = mongoose
+
 const sneakerSchema = new Schema(
 	{
 		name: {
@@ -18,10 +20,11 @@ const sneakerSchema = new Schema(
             type: Boolean,
             required: true
         },
+		shirts: [shirtSchema],
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
-			required: true,
+			// required: true,
 		},
 	},
 	{

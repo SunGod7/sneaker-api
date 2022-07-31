@@ -27,12 +27,12 @@ mongoose.connect(db, {
         // first we remove all of the pets
         // here we can add something to make sure we only delete pets without an owner
         Sneaker.deleteMany({ owner: null })
-            .then(deletedSneakes => {
-                console.log('deletedPets', deletedSneakers)
+            .then(deletedSneakers => {
+                console.log('deletedSneakers', deletedSneakers)
                 // the next step is to use our startPets array to create our seeded pets
                 Sneaker.create(startSneakers)
                     .then(newSneakers => {
-                        console.log('the new pets', newSneakers)
+                        console.log('the new sneakers', newSneakers)
                         mongoose.connection.close()
                     })
                     .catch(error => {

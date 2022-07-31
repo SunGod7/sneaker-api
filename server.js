@@ -5,6 +5,7 @@ const cors = require('cors')
 
 // require route files
 const sneakerRoutes = require('./app/routes/sneaker_routes')
+const shirtRoutes = require('./app/routes/shirt_routes')
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 
@@ -67,6 +68,7 @@ app.use(requestLogger)
 
 // register route files
 app.use(sneakerRoutes)
+app.use(shirtRoutes)
 app.use(exampleRoutes)
 app.use(userRoutes)
 
